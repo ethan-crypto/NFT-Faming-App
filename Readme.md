@@ -15,3 +15,9 @@ Frame your NFT like a PRO
 ```
 npm install
 ```
+
+### 2. Run the app
+- Setup env file like the env.example file
+```
+npm start
+```
