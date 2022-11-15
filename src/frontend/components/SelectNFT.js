@@ -60,7 +60,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address }) => {
         )}
         <button
           type='button'
-          className='btn btn-primary'
+          className='btn btn-primary text-black'
           data-bs-toggle='modal'
           data-bs-target='#exampleModal'
           onClick={getNFTData}
@@ -134,7 +134,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address }) => {
             <div className='modal-footer'>
               <button
                 type='button'
-                className='btn btn-secondary'
+                className='btn btn-primary'
                 data-bs-dismiss='modal'
               >
                 Close

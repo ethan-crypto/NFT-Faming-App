@@ -1,5 +1,3 @@
-import './App.css';
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Buffer } from 'buffer';
 import { Web3Storage } from 'web3.storage';
@@ -16,6 +14,10 @@ import FrameAddress from '../contractsData/Frame-address.json';
 import { create } from 'ipfs-http-client';
 import SelectNFT from './SelectNFT';
 import SelectFrame from './SelectFrame';
+import AppDetails from './AppDetails';
+import './App.css';
+import "../index.css"
+import Footer from './Footer';
 
 const App = () => {
   const canvasRef = useRef(null);
@@ -81,7 +83,6 @@ const App = () => {
           authorization,
         },
       });
-      console.log(ipfs);
       setIpfs(ipfs);
     } catch (error) {
       console.error('IPFS error ', error);
@@ -91,7 +92,7 @@ const App = () => {
 
   //The below function is used to merge 2 images together. this function particularly draws the first image 
   async function drawFirstImage(ctx, imageURL1) {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       let imageObj1 = new Image();
       imageObj1.src = imageURL1;
       imageObj1.crossOrigin = 'anonymous';
@@ -111,6 +112,7 @@ const App = () => {
       imageObj2.onload = async function () {
         await ctx.drawImage(imageObj2, 0, 0, 500, 500);
         img = resolve(await canvas.toDataURL('image/png'));
+        console.log(img)
       };
       return img;
     });
@@ -142,7 +144,7 @@ const App = () => {
       canvas.height = 500;
       let ctx = canvas.getContext('2d');
       
-      //Since differenct NFT collection uses different types of TokenURI, it is hard to configure an exact method.
+      //Since different NFT collection uses different types of TokenURI, it is hard to configure an exact method.
       //Some use IPFS url and some others use other URLs as well.
       //The problem with IPFS url is that we cannot fetch the data inside using fetch or axios and we need to convert it into an actual URL like https://ipfs.io/ipfs/${cid}
       //To solve that problem, I am checking for two different ways to process the URI and get the image from the URI
@@ -154,7 +156,7 @@ const App = () => {
         let cid1 = firstNFT.token_metadata.slice(7);
         console.log(cid1);
         metadataURL = `https://ipfs.io/ipfs/${cid1}`;
-      }else{
+      } else {
         metadataURL = firstNFT.token_metadata;
       }
 
@@ -175,7 +177,7 @@ const App = () => {
         let imageCID1 = res.image.slice(7);
         console.log(imageCID1);
         imageURL1 = `https://ipfs.io/ipfs/${imageCID1}`;
-      }else{
+      } else {
         imageURL1 = res.image;
       }
       console.log(imageURL1);
@@ -237,8 +239,10 @@ const App = () => {
   // }
 
   return (
-    <div>
+    <div className="min-h-screen min-w-fit">
+      <div className='gradient-bg-color'>
       <Navbar />
+      <AppDetails />
       <div className='px-4 py-5 my-5 text-center'>
         <div className='row'>
           <div className='col'>
@@ -262,12 +266,13 @@ const App = () => {
         <div className='mt-5'>
           <canvas className='myCanvas' ref={canvasRef}></canvas>
         </div>
-        <button className='btn btn-danger' onClick={merge}>
-        {loading? <span><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-  <span className='ms-2'>Merging...</span></span>: <span>Merge</span>}
-      </button>
+        <button className='btn bg-green hover:bg-green hover:text-white' onClick={merge}>
+          {loading? <span><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span className='ms-2'>Merging...</span></span>: <span>Merge</span>}
+        </button>
+        <Footer />
       </div>
-      
+      </div>
     </div>
   );
 };
