@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
+// This is a normal ERC1155 contract generated using the contract wizard from openzeppelin
+
 contract Frame is ERC1155, Ownable, ERC1155Supply {
     using Strings for uint256;
     string private baseURI;
