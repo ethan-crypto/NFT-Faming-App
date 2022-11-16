@@ -11,10 +11,10 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 contract Frame is ERC1155, Ownable, ERC1155Supply {
     using Strings for uint256;
     string private baseURI;
+    uint8 private immutable frameCount;
 
-    constructor(string memory _baseURI)
-        ERC1155(_baseURI)
-    {
+    constructor(string memory _baseURI, uint8 _frameCount) ERC1155(_baseURI) {
+        frameCount = _frameCount;
         //"ipfs://Qmd2g8bcYcAR1ezrTJ1s97isFr7Je6a4suT2FehqwbYEF1/"
         baseURI = _baseURI;
     }
@@ -52,7 +52,7 @@ contract Frame is ERC1155, Ownable, ERC1155Supply {
         returns (string memory)
     {
         require(
-            tokenId <= 2,
+            tokenId < frameCount, //TODO: change from hardcoded to dynamic. Based on the number of frames on IPFS.
             "URI requested for invalid tokenId"
         );
         return

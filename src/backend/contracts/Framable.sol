@@ -19,20 +19,23 @@ contract Framable is ERC721, ERC721URIStorage {
         address contractAddress;
         uint256 tokenId;
         address owner;
+        bool isFramed;
     }
     // A mapping from newly minted token to the structure.
     // this will help use identify which token to unmerge
     mapping(uint256 => NFT) public myNft;
 
-    constructor() ERC721("MergedNFT", "MFT") {}
+    constructor() ERC721("MergedNFT", "MNFT") {}
 
     function merge(string memory uri, address _contractAddress, uint256 _originalTokenId) public {
+        require(_contractAddress != address(0) && _contractAddress != address(this), "Invalid contract address");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         NFT memory nftStruct = NFT(
             _contractAddress,
             _originalTokenId,
-            msg.sender
+            msg.sender,
+            true
         );
         myNft[tokenId] = nftStruct;
         IERC721 nft = IERC721(_contractAddress);
@@ -46,7 +49,9 @@ contract Framable is ERC721, ERC721URIStorage {
     function unmerge(uint256 _tokenId) public{
         _burn(_tokenId);
         NFT memory nftStruct = myNft[_tokenId];
+        nftStruct.isFramed = false;
         IERC721 nft = IERC721(nftStruct.contractAddress);
+        myNft[_tokenId] = nftStruct;
         nft.transferFrom(address(this), nftStruct.owner, nftStruct.tokenId);
     }
 

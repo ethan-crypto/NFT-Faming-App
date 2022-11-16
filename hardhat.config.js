@@ -4,7 +4,7 @@ require('dotenv').config()
 module.exports = {
   solidity: "0.8.9",
   networks:{
-    polygon:{
+    polygon: {
       url: process.env.REACT_APP_ALCHEMY_API,
       accounts: [process.env.ACCOUNT]
     }
