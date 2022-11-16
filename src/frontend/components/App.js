@@ -34,6 +34,7 @@ const App = () => {
   const [ipfs, setIpfs] = useState(null);
 
   const [loading, setLoading] = useState(false)
+  const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
     if (!isDisconnected) {
@@ -251,6 +252,8 @@ const App = () => {
               setFirstNFT={setFirstNFT}
               firstNFT={firstNFT}
               address={address}
+              setDisabled={setDisabled}
+              disabled={disabled}
             />
           </div>
           <div className='col'>
@@ -266,7 +269,13 @@ const App = () => {
         <div className='mt-5'>
           <canvas className='myCanvas' ref={canvasRef}></canvas>
         </div>
-        <button className='btn bg-green hover:bg-green hover:text-white' onClick={merge}>
+        <button 
+          type='button'
+          // className='btn bg-green hover:bg-green hover:text-white'
+          className="justify-center items-center py-2 px-4 hover:p-10 rounded-full cursor-pointer bg-gradient-to-r from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum  text-white" 
+          onClick={merge}
+          disabled={disabled}
+          >
           {loading? <span><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           <span className='ms-2'>Merging...</span></span>: <span>Merge</span>}
         </button>

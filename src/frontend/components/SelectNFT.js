@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SelectNFT = ({ setFirstNFT, firstNFT, address }) => {
+const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) => {
   const [allNfts, setAllNfts] = useState([]);
 
   const getNFTData = async () => {
@@ -25,6 +25,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address }) => {
         .catch((err) => {
           console.error(err);
         });
+      setDisabled(!disabled)
     } catch (error) {
       console.log(error);
     }
@@ -58,15 +59,17 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address }) => {
             </div>
           </div>
         )}
+        <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
         <button
           type='button'
-          className='btn btn-primary text-black'
+          className="flex flex-row justify-center items-center my-5 px-4 py-2 rounded-full cursor-pointer bg-gradient-to-r from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum text-white"
           data-bs-toggle='modal'
           data-bs-target='#exampleModal'
           onClick={getNFTData}
         >
           Select NFT
         </button>
+        </div>
       </div>
 
       <div

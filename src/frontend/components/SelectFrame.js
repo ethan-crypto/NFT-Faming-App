@@ -40,10 +40,9 @@ const SelectFrame = ({ frame, setFrame, address, setFrameTokenId }) => {
           </div>
         )}
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-        <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center yellow-glassmorphism mb-5"></div>
         <button
           type='button'
-          className='btn border-blue text-black bg-transparent hover:text-white hover:border-green'
+          className="flex flex-row justify-center items-center my-5 py-2 px-4 rounded-full cursor-pointer bg-gradient-to-r from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum text-white"
           data-bs-toggle='modal'
           data-bs-target='#exampleModal1'
           onClick={getAllFrames}

@@ -13,7 +13,6 @@ const Footer = () => (
   <div className={container}>
     <div className={subContainer}>
       <p className={P1}>Beautify your precious avatar in 3 clicks</p>
-      <p className={P2}>support@sendcypto.com</p>
     </div>
     <div className={footerLine} />
     <div className={footerText}>
