@@ -6,19 +6,20 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   const Frame = await ethers.getContractFactory('Frame');
-  //TODO: You may change this if you want
-  const frame = await Frame.deploy('ipfs://Qmd2g8bcYcAR1ezrTJ1s97isFr7Je6a4suT2FehqwbYEF1/');
+  // TODO: You may change this if you want
+  // Make sure that the Json files uploaded starts from 0 and is named like 0,1,2,3 and 0.json, 1.json etc..
+  const frame = await Frame.deploy('ipfs://QmSoioz8PmVGZp2XxYn8aVjriUmL8PNLH9YKKTHooVQCkd/');
 
   console.log("Frame was deployed to Address: ", frame.address);
 
-  const MergedNFT = await ethers.getContractFactory('MergedNFT');
-  const mergedNFT = await MergedNFT.deploy();
+  const Framable = await ethers.getContractFactory('Framable');
+  const framable = await Framable.deploy();
 
-  console.log("MergedNFT was deployed to Address: ", mergedNFT.address);
+  console.log("Framable was deployed to Address: ", framable.address);
 
   // For each contract, pass the deployed contract and name to this function to save a copy of the contract ABI and address to the front end.
   saveFrontendFiles(frame, 'Frame');
-  saveFrontendFiles(mergedNFT, 'MergedNFT');
+  saveFrontendFiles(framable, 'Framable');
 }
 
 function saveFrontendFiles(contract, name) {

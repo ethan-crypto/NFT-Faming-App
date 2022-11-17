@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) => {
+
+const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress, setDisabled, disabled }) => {
   const [allNfts, setAllNfts] = useState([]);
 
   const getNFTData = async () => {
@@ -10,17 +11,24 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) =>
         method: 'GET',
         headers: { Accept: 'application/json' },
       };
-      //Mainnet
-      //https://api.opensea.io/api/v1/assets?owner=${address}&limit=200
-      //Goelri
+      // Mainnet
+      // https://api.opensea.io/api/v1/assets?owner=${address}&limit=200
+      // Goelri
+      // `https://testnets-api.opensea.io/api/v1/assets?owner=${address}&limit=200`
+      let fetchURL;
+      if(contractAddress == null){
+        fetchURL = `https://polygon-mumbai.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
+      }else{
+        fetchURL = `https://polygon-mumbai.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&contractAddresses[]=${contractAddress}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
+      }
       fetch(
-        `https://testnets-api.opensea.io/api/v1/assets?owner=${address}&limit=200`,
+        fetchURL,
         options
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log(response.assets);
-          setAllNfts(response.assets);
+          console.log(response.ownedNfts);
+          setAllNfts(response.ownedNfts);
         })
         .catch((err) => {
           console.error(err);
@@ -41,21 +49,21 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) =>
           >
             <div className='image-box'>
               <img
-                src={firstNFT.image_preview_url}
+                src={firstNFT.media[0].gateway} //firstNFT.media[0].gateway
                 className='nft-img card-img-top pt-3'
                 alt='...'
               />
             </div>
             <div className='card-body'>
-              <h5 className='card-title fs-6'>#{firstNFT.token_id}</h5>
-              <p className='card-text lead fs-6'>
-                {/* <img
+              <h5 className='card-title fs-6'>#{Number(firstNFT.id.tokenId)}</h5>
+              {/* <p className='card-text lead fs-6'>
+                 <img
                   alt={firstNFT.token_id}
                   src={firstNFT.collection.image_url}
                   className='collection-image me-2'
-                ></img> */}
+                ></img> 
                 {firstNFT.collection.name}
-              </p>
+              </p> */}
             </div>
           </div>
         )}
@@ -96,7 +104,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) =>
               <div className='row'>
                 {allNfts !== [] &&
                   allNfts.map((nft, i) => {
-                    if (nft.image_preview_url !== null) {
+                    // if (nft.image_preview_url !== null) {
                       return (
                         <div
                           key={i}
@@ -105,21 +113,21 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) =>
                         >
                           <div className='image-box'>
                             <img
-                              src={nft.image_preview_url}
+                              src={nft.media[0].gateway}
                               className='nft-img card-img-top pt-3'
                               alt='...'
                             />
                           </div>
                           <div className='card-body'>
-                            <h5 className='card-title fs-6'>#{nft.token_id}</h5>
-                            <p className='card-text fw-light' style={{fontSize: "12px"}}>
-                              {/* <img
+                            <h5 className='card-title fs-6'>#{Number(nft.id.tokenId)}</h5>
+                            {/* <p className='card-text fw-light' style={{fontSize: "12px"}}>
+                               <img
                                 alt={nft.token_id}
                                 src={nft.collection.image_url}
                                 className='collection-image me-2'
-                              ></img> */}
+                              ></img> 
                               {nft.collection.name}
-                            </p>
+                            </p> */}
                             <button
                               className='btn btn-primary btn-sm'
                               data-bs-dismiss='modal'
@@ -130,7 +138,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, setDisabled, disabled }) =>
                           </div>
                         </div>
                       );
-                    }
+                    // }
                   })}
               </div>
             </div>

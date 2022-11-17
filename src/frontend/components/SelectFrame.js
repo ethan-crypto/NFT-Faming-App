@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 
-const SelectFrame = ({ frame, setFrame, address, setFrameTokenId }) => {
+const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameTokenId }) => {
   const [frameImages, setFrameImages] = useState([]);
 
-  const getAllFrames = () => {
+  const getAllFrames = async () => {
     try {
-      //TODO: You may change the below IPFS URL.
-      //However, please make sure that you need to give the Image URL here and NOT the metadata one
-      //Also, make sure that the filenames of the images are named like 0.png, 1.png, 2.png etc..
-      //So the final URL will be something like https://ipfs.io/ipfs/{YOUR-CID}/0.png...
       let frames = [];
-      //TODO: Please change the number "2" to the total number of images that you have
-      for (let i = 0; i <= 2; i++) {
-        frames.push(
-          `https://ipfs.io/ipfs/QmcwqTXcTbNMcSYdZC99rhatgvDymKj12bfDpFPnpbENqq/${i}.png`
-        );
+      let frameMeta = []
+      // TODO: Please change the number "3" to the total number of images
+      for (let i = 0; i < 3; i++) {
+        // TODO: You may change the below IPFS URL. This is the same TokenURI given in during contract deployment
+        const tx = await fetch(`https://ipfs.io/ipfs/QmSoioz8PmVGZp2XxYn8aVjriUmL8PNLH9YKKTHooVQCkd/${i}`)
+        const res = await tx.json();
+        frameMeta.push(res)
+        if(res.image.slice(0,7) == 'ipfs://'){
+          let cid = res.image.slice(7);
+          let img = `https://ipfs.io/ipfs/${cid}`;
+          frames.push(img);
+        }else{
+          frames.push(res.image);
+        }
       }
       setFrameImages(frames);
+      setFrameMetadata(frameMeta)
     } catch (error) {
       console.log(error);
     }
