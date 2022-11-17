@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress, setDisabled, disabled }) => {
+const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress}) => {
   const [allNfts, setAllNfts] = useState([]);
 
   const getNFTData = async () => {
@@ -33,7 +33,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress, setDisable
         .catch((err) => {
           console.error(err);
         });
-      setDisabled(!disabled)
+      // setDisabled(!disabled)
     } catch (error) {
       console.log(error);
     }

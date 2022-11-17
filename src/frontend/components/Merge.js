@@ -300,7 +300,10 @@ const Merge = () => {
         <div className='mt-5'>
           <canvas className='myCanvas' ref={canvasRef}></canvas>
         </div>
-        <button className='btn btn-danger' onClick={merge}>
+        <button           
+          className="justify-center items-center py-2 px-4 hover:p-10 rounded-full cursor-pointer bg-gradient-to-r  from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum  text-white"  
+          onClick={merge}
+        >
           {loading ? (
             <span>
               <span

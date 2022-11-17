@@ -20,6 +20,7 @@ module.exports = {
         'bermuda': '#78dcca',
         'green': '#3fc441',
         'blue': '#004AFF',
+        'black': '#08090d',
       },
       extend: {
         screens: {
