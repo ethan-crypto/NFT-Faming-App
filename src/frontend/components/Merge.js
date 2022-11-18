@@ -14,6 +14,7 @@ import FrameAddress from '../contractsData/Frame-address.json';
 import { create } from 'ipfs-http-client';
 import SelectNFT from './SelectNFT';
 import SelectFrame from './SelectFrame';
+import Unmerge from './Unmerge';
 
 const Merge = () => {
   const canvasRef = useRef(null);
@@ -319,6 +320,7 @@ const Merge = () => {
         </button>
       </div>{' '}
       {/* <button className='btn btn-info' onClick={showshow}>Show</button> */}
+      <Unmerge />
     </div>
   );
 };

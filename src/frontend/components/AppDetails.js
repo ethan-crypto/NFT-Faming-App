@@ -10,8 +10,8 @@ const AppDetails = () => {
             Frame your <br /> favorite NFT.
           </h1>
           <p className="text-left text-light mt-3 text-white font-light md:w-9/12 w-11/12 text-base">
-            How beautiful can NFTs be? Find out by framing your NFT with one of
-            our beautiful frames.
+            Want to upgrade your NFT rarity? Turbo charge the power of your
+            digital assets with our unique frames.
           </p>
         </div>
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
