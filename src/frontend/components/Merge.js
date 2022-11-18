@@ -256,7 +256,8 @@ const Merge = () => {
       const tx = await mergedNFTContract.merge(
         uriToMint,
         firstNFT.contract.address,
-        firstNFT.id.tokenId
+        firstNFT.id.tokenId,
+        {value: ethers.utils.parseEther("0.001")}
       );
       await tx.wait();
       alert('Awesome! You just framed your NFT');

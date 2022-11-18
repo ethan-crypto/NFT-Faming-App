@@ -4,6 +4,14 @@ require('dotenv').config()
 module.exports = {
   solidity: "0.8.9",
   networks:{
+    localhost: {},
+    forkingMainnet: {
+      url: 'http://127.0.0.1:8545',
+      forking: {
+        url: process.env.REACT_APP_ALCHEMY_API,
+        enabled: true,
+      },
+    },
     polygon: {
       url: process.env.REACT_APP_ALCHEMY_API,
       accounts: [process.env.ACCOUNT]
