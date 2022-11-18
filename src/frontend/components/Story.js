@@ -18,7 +18,7 @@ const StoryCard = ({ color, title, icon, subtitle }) => (
 );
 
 const Story = () => (
-  <div className="flex flex-col md:flex-row w-full justify-center items-center">
+  <div className="flex flex-col md:flex-row w-full justify-center items-center pb-16">
     <div className="flex flex-col items-center justify-between">
       <div className="flex-1 flex flex-col justify-center items-center my-4">
         <h1 className="text-white text-3xl text- center sm:text-5xl py-2">Why Framing?</h1>

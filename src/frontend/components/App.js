@@ -9,7 +9,6 @@ import "./App.css";
 
 const App = () => {
   return (
-    <BrowserRouter>
       <div className="w-full min-h-screen min-w-fit">
         <div className="bg-black">
           <Navbar />
@@ -21,7 +20,6 @@ const App = () => {
           <Footer />
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 
