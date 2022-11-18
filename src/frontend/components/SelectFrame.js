@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { buttonStyle } from '../utils/reusable';
 
 const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameTokenId }) => {
   const [frameImages, setFrameImages] = useState([]);
@@ -48,7 +49,7 @@ const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameToken
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
         <button
           type='button'
-          className="flex flex-row justify-center items-center my-5 py-2 px-4 rounded-full cursor-pointer bg-gradient-to-r from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum text-white"
+          className={buttonStyle}
           data-bs-toggle='modal'
           data-bs-target='#exampleModal1'
           onClick={getAllFrames}
@@ -115,7 +116,7 @@ const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameToken
             <div className='modal-footer'>
               <button
                 type='button'
-                className='btn btn-secondary'
+                className={buttonStyle}
                 data-bs-dismiss='modal'
               >
                 Close

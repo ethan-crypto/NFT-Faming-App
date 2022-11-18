@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { buttonStyle } from '../utils/reusable';
 
 
 const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress}) => {
@@ -145,7 +146,7 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress}) => {
             <div className='modal-footer'>
               <button
                 type='button'
-                className='btn btn-primary'
+                className={buttonStyle}
                 data-bs-dismiss='modal'
               >
                 Close
