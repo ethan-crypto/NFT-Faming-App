@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Merge from "./Merge";
+import frame from "../Assets/frame.jpg"
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,10 +25,10 @@ const Navbar = () => {
           >
             <div className="flex lg:min-w-0 lg:flex-1" aria-label="Global">
               <Link
-                className="text-gradient font-medium navbar-brand shadow-md px-2"
+                // className="text-gradient font-medium navbar-brand shadow-md px-2"
                 to="/"
               >
-                Fabriano.xyz
+                <img src={frame} alt="" className="h-55 w-40"/>
               </Link>
             </div>
             <div className="flex lg:hidden">
