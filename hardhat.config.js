@@ -13,7 +13,7 @@ module.exports = {
       },
     },
     polygon: {
-      url: "https://rpc-mumbai.maticvigil.com",
+      url: process.env.REACT_APP_ALCHEMY_API,
       accounts: [process.env.ACCOUNT]
     }
   },

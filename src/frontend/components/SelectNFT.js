@@ -18,9 +18,9 @@ const SelectNFT = ({ setFirstNFT, firstNFT, address, contractAddress}) => {
       // `https://testnets-api.opensea.io/api/v1/assets?owner=${address}&limit=200`
       let fetchURL;
       if(contractAddress == null){
-        fetchURL = `https://polygon-mumbai.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
+        fetchURL = `https://eth-goerli.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
       }else{
-        fetchURL = `https://polygon-mumbai.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&contractAddresses[]=${contractAddress}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
+        fetchURL = `https://eth-goerli.g.alchemy.com/nft/v2/demo/getNFTs?owner=${address}&contractAddresses[]=${contractAddress}&withMetadata=true&filters=SPAM&filters=AIRDROPS`
       }
       fetch(
         fetchURL,
