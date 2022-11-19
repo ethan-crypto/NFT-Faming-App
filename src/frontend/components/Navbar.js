@@ -13,7 +13,6 @@ const Navbar = () => {
   const navigation = [
     { name: "Home", link: "/" },
     { name: "FrameWorks", link: "/framework"},
-    { name: "Story", link: "/"},
   ];
   return (
     <div className="w-full">
