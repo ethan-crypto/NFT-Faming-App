@@ -7,7 +7,7 @@ const {
   
   describe("NFT framing protocol", function () {
 
-    const baseUri = 'ipfs://QmSoioz8PmVGZp2XxYn8aVjriUmL8PNLH9YKKTHooVQCkd/'
+    const baseUri = 'https://ipfs.io/ipfs/QmUmnivf5vKwzZwbb8EwABVgfzpMKERimhXqGrArzUVCUC'
     // We define a fixture to reuse the same setup in every test.
     // We use loadFixture to run this setup once, snapshot that state,
     // and reset Hardhat Network to that snapshopt in every test.

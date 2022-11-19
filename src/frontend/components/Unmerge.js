@@ -46,12 +46,6 @@ const Unmerge = () => {
 
   return (
     <div className="container text-center">
-      <SelectNFT
-        setFirstNFT={setMergedNft}
-        firstNFT={mergedNft}
-        address={address}
-        contractAddress={MergedNFTAddress.address}
-      />
       <button
         type="button"
         className={"justify-center items-center text-white py-2 px-4 rounded-full cursor-pointer bg-gradient-to-r from-blue to-purple hover:from-blue hover:via-purple hover:to-bubble-gum"}

@@ -8,7 +8,7 @@ async function main() {
   const Frame = await ethers.getContractFactory('Frame');
   // TODO: You may change this if you want
   // Make sure that the Json files uploaded starts from 0 and is named like 0,1,2,3 and 0.json, 1.json etc..
-  const frame = await Frame.deploy('ipfs://QmSoioz8PmVGZp2XxYn8aVjriUmL8PNLH9YKKTHooVQCkd/');
+  const frame = await Frame.deploy('https://ipfs.io/ipfs/QmUmnivf5vKwzZwbb8EwABVgfzpMKERimhXqGrArzUVCUC', 10);
 
   console.log("Frame was deployed to Address: ", frame.address);
 

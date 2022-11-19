@@ -128,7 +128,7 @@ const Merge = () => {
     }
   };
 
-  //This is the main merge function which will call eventually call the above functions
+  //This is the main merge function which will eventually call the above functions
   const merge = async () => {
     try {
       setLoading(true);
@@ -280,7 +280,7 @@ const Merge = () => {
       <div className='px-4 py-5 my-5 text-center'>
         <div className='row'>
           <div className='col'>
-            {/* <button onClick={showshow}>Shjow</button> */}
+            {/* <button onClick={showshow}>Show</button> */}
             <SelectNFT
               setFirstNFT={setFirstNFT}
               firstNFT={firstNFT}

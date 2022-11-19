@@ -70,7 +70,7 @@ const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameToken
           <div className='modal-content'>
             <div className='modal-header'>
               <h1 className='modal-title fs-5' id='exampleModalLabel1'>
-                Your NFTs
+                Your Frames
               </h1>
               <button
                 type='button'
@@ -105,7 +105,7 @@ const SelectFrame = ({ frame, setFrame, address, setFrameMetadata, setFrameToken
                               setFrameTokenId(i);
                             }}
                           >
-                            Select this
+                            Select
                           </button>
                         </div>
                       </div>

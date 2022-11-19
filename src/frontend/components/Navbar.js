@@ -27,7 +27,7 @@ const Navbar = () => {
                 className="text-gradient font-medium navbar-brand shadow-md px-2"
                 to="/"
               >
-                NFT Merger
+                Fabriano.xyz
               </Link>
             </div>
             <div className="flex lg:hidden">
